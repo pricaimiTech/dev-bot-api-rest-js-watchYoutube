@@ -1,123 +1,149 @@
-```markdown
-# 🎯 TrendWatchYoutube
+# 📊 TrendWatchYoutube
 
-Bot automatizado para monitorar tendências do YouTube em nichos de tecnologia e enviar alertas organizados em canais do Discord.
-
----
-
-## 🚀 Objetivo
-
-Monitorar vídeos em alta no YouTube em nichos como:
-- Desenvolvimento
-- QA
-- Engenharia de Software
-- Node.js
-- Automação
-
-Os dados coletados são enviados automaticamente para os canais específicos no Discord, com destaque para vídeos com alto engajamento.
+TrendWatchYoutube é um bot inteligente de monitoramento de conteúdo em alta no YouTube voltado para nichos como Node.js, QA, Desenvolvimento, Engenharia de Software e Automação. Ele busca os vídeos mais visualizados por termo, classifica o engajamento e envia alertas personalizados para canais do Discord organizados por tema.
 
 ---
 
-## 🧱 Tecnologias utilizadas
+## 🚀 Funcionalidades
 
-- Node.js
-- Discord.js
-- YouTube Data API v3
-- dotenv
-- axios
+- Busca automática de vídeos por termos configurados
+- Classificação de engajamento com base nas visualizações
+- Envio de alertas formatados para canais do Discord por termo
+- Suporte a vários termos por requisição
+- Estrutura em domínio para expansão futura (TikTok, etc.)
 
 ---
 
-## 📁 Estrutura do Projeto
+## 🧱 Estrutura do Projeto
 
 ```
-trendWatchYoutube/
-│
-├── config/                # Configurações de ambiente (.env, API keys)
+trend-watch-youtube/
+├── bot/
+│   └── discordClient.js
+├── config/
 │   └── env.js
-│
-├── scripts/               # Scripts principais
-│   ├── index.js           # Arquivo de entrada (main)
-│   └── youtubeSearch.js   # Busca de vídeos por nicho
-│
-├── bot/                   # Bot do Discord
-│   └── discordClient.js   # Setup e conexão com o bot
-│
-├── utils/                 # Utilitários e suporte
-│   └── formatVideoData.js # Formatação da mensagem a ser enviada
-│
-├── .env                   # Variáveis de ambiente (não versionado)
-└── README.md
+├── domains/
+│   └── youtube/
+│       ├── controllers/
+│       │   └── youtubeController.js
+│       ├── dtos/
+│       │   └── video.dto.js
+│       ├── routes/
+│       │   └── youtube.routes.js
+│       ├── schemas/
+│       │   └── video.schema.js
+│       ├── services/
+│       │   ├── youtubeService.js
+│       │   └── discordService.js
+│       └── utils/
+│           ├── classificarEngajamento.js
+│           └── roterizador.js
+└── channelsMap.js
 ```
 
 ---
 
-## ⚙️ Configuração
+## 🧪 Requisição para rota POST
 
-1. Clone o repositório:
+`POST /api/youtube/top-videos`
 
-
-```bash
-git clone https://github.com/seu-usuario/trendWatchYoutube.git
-cd trendWatchYoutube
+### Body:
+```json
+{
+  "termos": [
+    "nodejs",
+    "qa",
+    "dev",
+    "engenharia de software",
+    "automção de testes"
+  ]
+}
 ```
 
-2. Instale as dependências:
+### Response:
+```json
+{
+  "nodejs": [
+    {
+      "id": "abc123",
+      "titulo": "What is Node.js?",
+      "canal": "TechChannel",
+      "visualizacoes": 100000,
+      "publicacao": "2022-01-01T00:00:00Z",
+      "link": "https://youtube.com/watch?v=abc123",
+      "engajamento": {
+        "destaque": true,
+        "nivel": "🔥 Viral"
+      }
+    }
+  ]
+}
+```
 
+---
+
+## 📡 Alertas no Discord
+
+Os vídeos com maior destaque são enviados para o canal correspondente ao termo usando o `canalMap.js`. A mensagem enviada contém:
+
+- Título
+- Canal
+- Publicação
+- Visualizações
+- Link
+- Nível de engajamento
+
+---
+
+## 🛠️ Setup do Projeto
+
+1. Clone o repositório
+```bash
+git clone https://github.com/SEU_USUARIO/trend-watch-youtube.git
+cd trend-watch-youtube
+```
+
+2. Instale as dependências
 ```bash
 npm install
 ```
 
-3. Crie um arquivo `.env` com as seguintes variáveis:
-
+3. Configure o `.env`
 ```env
-YOUTUBE_API_KEY= SUA_API_KEY_DO_YOUTUBE
-DISCORD_TOKEN= SEU_TOKEN_DO_BOT
-CHANNEL_DEFAULT_ID= ID_DE_UM_CANAL_PADRÃO
+YOUTUBE_API_KEY=your_youtube_key
+DISCORD_TOKEN=your_discord_token
+CHANNEL_NODEJS=1234567890
+CHANNEL_QA=...
 ```
 
-4. Configure os canais por nicho em `config/channelMap.js`:
-
-```js
-export const channelMap = {
-  dev: 'ID_DO_CANAL_DEV',
-  qa: 'ID_DO_CANAL_QA',
-  engenharia: 'ID_DO_CANAL_ENGENHARIA',
-  nodejs: 'ID_DO_CANAL_NODEJS',
-  automacao: 'ID_DO_CANAL_AUTOMACAO',
-};
-```
-
----
-
-## ▶️ Executando
-
-Para rodar o bot:
-
+4. Inicie o bot do Discord
 ```bash
-node index.js
+node src/bot/discordClient.js
+```
+
+5. Inicie a API
+```bash
+npm start
 ```
 
 ---
 
-## 🧠 Funcionalidades futuras
-
-- Geração de roteiros com base na transcrição dos vídeos mais populares.
-- Análise automática de risco com IA.
-- Painel web com dados e alertas.
-- Integração com TikTok (fase pós-monetização do canal).
-
----
-
-## ✨ Contribuição
-
-Ideias, sugestões ou PRs são sempre bem-vindos. Vamos construir isso juntos! 💡
+## 📌 Roadmap Futuro
+- [ ] Integração com MongoDB
+- [ ] Transcrição automática dos vídeos em destaque
+- [ ] Painel web para visualização e gestão
+- [ ] Integração com TikTok e outras redes
+- [ ] Agendamento com cron e deploy na nuvem
 
 ---
 
-## 📜 Licença
+## 👩‍💻 Feito por
+**Priscila Caimi** - Engenheira de Software & Criadora de Conteúdo Tech
 
-Projeto sob a [MIT License](LICENSE).
-```
+Contribuições, issues e feedbacks são super bem-vindos! 💜
 
-Se quiser, posso gerar esse arquivo já com o nome certo pra você baixar ou colar direto na pasta do projeto. Deseja isso?
+---
+
+## 📄 Licença
+Este projeto está licenciado sob a MIT License.
+

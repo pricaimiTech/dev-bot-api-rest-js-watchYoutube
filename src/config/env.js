@@ -10,7 +10,7 @@ export default {
     dev: process.env.CANAL_DEV_ID,
     qa: process.env.CANAL_QA_ID,
     engenharia: process.env.CANAL_ENG_ID,
-    nodejs: process.env.CANAL_NODEJS_ID,
+    jest: process.env.CANAL_JEST_ID,
     automacao: process.env.CANAL_AUTOMACAO_ID,
   }
 };
