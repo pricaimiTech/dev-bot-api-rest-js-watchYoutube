@@ -13,7 +13,7 @@ const canalPorTermo = {
 export async function enviarAlertaDiscord(termo, video) {
   const canalId = canalPorTermo[termo.toLowerCase()] || config.channels.default;
   const canal = await client.channels.fetch(canalId);
-  const { destaque, nivel } = classificarEngajamento(video.viewCount);
+  const { destaque, nivel } = classificarEngajamento(video.visualizacoes);
 
   const destaqueEmoji = destaque ? '🚨' : '📹';
 

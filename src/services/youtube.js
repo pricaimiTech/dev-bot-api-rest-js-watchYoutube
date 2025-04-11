@@ -4,9 +4,9 @@ import config from '../config/env.js';
 const YOUTUBE_API_URL = 'https://www.googleapis.com/youtube/v3/search';
 const YOUTUBE_VIDEO_DETAILS_URL = 'https://www.googleapis.com/youtube/v3/videos';
 
-const sixMonthsAgo = new Date();
-sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
-const publishedAfter = sixMonthsAgo.toISOString();
+// const sixMonthsAgo = new Date();
+// sixMonthsAgo.setMonth(sixMonthsAgo.getMonth() - 6);
+// const publishedAfter = sixMonthsAgo.toISOString();
 
 async function buscarVideosPorTermo(termo, maxResults = 5) {
   try {
@@ -17,7 +17,7 @@ async function buscarVideosPorTermo(termo, maxResults = 5) {
         q: termo,
         type: 'video',
         maxResults,
-        publishedAfter,
+        // publishedAfter,
         key: config.youtubeKey,
       },
     });
