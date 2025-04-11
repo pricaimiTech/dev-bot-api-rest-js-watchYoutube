@@ -2,7 +2,7 @@ import { client } from '../src/bot/discordClient.js';
 import { buscarVideosPorTermo } from '../src/services/youtube.js';
 import { enviarAlertaDiscord } from '../src/services/discord.js';
 
-const termosBusca = ['nodejs', 'qa', 'dev', 'engenharia de software', 'automação'];
+const termosBusca = ['nodejs', 'qa', 'dev', 'engenharia de software', 'automação de testes'];
 
 client.once('ready', async () => {
   console.log('🤖 Bot rodando e buscando trends no YouTube...');

@@ -33,7 +33,7 @@ async function buscarVideosPorTermo(termo, maxResults = 5) {
       },
     });
 
-    return detailsResponse.data.items.map(video => ({
+    const videos = detailsResponse.data.items.map(video => ({
       id: video.id,
       titulo: video.snippet.title,
       canal: video.snippet.channelTitle,
@@ -41,6 +41,9 @@ async function buscarVideosPorTermo(termo, maxResults = 5) {
       visualizacoes: parseInt(video.statistics.viewCount, 10),
       link: `https://www.youtube.com/watch?v=${video.id}`,
     }));
+
+    console.log('📦 Vídeos formatados:', videos); // ✅ Adiciona esse log aqui
+    return videos
   } catch (error) {
     console.error('❌ Erro ao buscar vídeos no YouTube:', error.message);
     return [];

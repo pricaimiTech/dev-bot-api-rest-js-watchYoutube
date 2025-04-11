@@ -1,5 +1,5 @@
 import { client } from '../bot/discordClient.js';
-import { config } from '../config/env.js';
+import config from '../config/env.js';
 import { classificarEngajamento } from '../utils/classificador.js';
 
 const canalPorTermo = {
@@ -7,7 +7,7 @@ const canalPorTermo = {
   'qa': config.channels.qa,
   'dev': config.channels.dev,
   'engenharia de software': config.channels.engenharia,
-  'automação': config.channels.automacao,
+  'automação de testes': config.channels.automacao,
 };
 
 export async function enviarAlertaDiscord(termo, video) {
@@ -18,11 +18,11 @@ export async function enviarAlertaDiscord(termo, video) {
   const destaqueEmoji = destaque ? '🚨' : '📹';
 
   const mensagem = `${destaqueEmoji} **Trend detectada para "${termo}"**
-**🎬 Título:** ${video.title}
-**📺 Canal:** ${video.channelTitle}
-**👁️ Visualizações:** ${video.viewCount}
+**🎬 Título:** ${video.titulo}
+**📺 Canal:** ${video.canal}
+**👁️ Visualizações:** ${video.visualizacoes}
 **📌 Nível de engajamento:** ${nivel}
-🔗 https://www.youtube.com/watch?v=${video.videoId}`;
-
+🔗 ${video.link}`;
+  console.log(`📩 Enviando mensagem para o canal ${canalId}:`, mensagem); // ✅ Adiciona esse log aqui
   await canal.send(mensagem);
 }

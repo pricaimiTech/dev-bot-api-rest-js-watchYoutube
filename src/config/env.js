@@ -6,11 +6,11 @@ export default {
   youtubeKey: process.env.YOUTUBE_API_KEY,
   guildId: process.env.DISCORD_GUILD_ID,
   channels: {
-    default: process.env.DISCORD_CHANNEL_DEFAULT_ID,
-    dev: process.env.DISCORD_CHANNEL_DEV_ID,
-    qa: process.env.DISCORD_CHANNEL_QA_ID,
-    engenharia: process.env.DISCORD_CHANNEL_ENG_ID,
-    nodejs: process.env.DISCORD_CHANNEL_NODE_ID,
-    automacao: process.env.DISCORD_CHANNEL_AUTO_ID,
+    default: process.env.CANAL_DEFAULT_ID,
+    dev: process.env.CANAL_DEV_ID,
+    qa: process.env.CANAL_QA_ID,
+    engenharia: process.env.CANAL_ENG_ID,
+    nodejs: process.env.CANAL_NODEJS_ID,
+    automacao: process.env.CANAL_AUTOMACAO_ID,
   }
 };
