@@ -1,16 +1,18 @@
 # 📊 TrendWatchYoutube
 
+🟡 Em andamento o desenvolvimento
+
 TrendWatchYoutube é um bot inteligente de monitoramento de conteúdo em alta no YouTube voltado para nichos como Node.js, QA, Desenvolvimento, Engenharia de Software e Automação. Ele busca os vídeos mais visualizados por termo, classifica o engajamento e envia alertas personalizados para canais do Discord organizados por tema.
 
 ---
 
 ## 🚀 Funcionalidades
 
-- Busca automática de vídeos por termos configurados
-- Classificação de engajamento com base nas visualizações
-- Envio de alertas formatados para canais do Discord por termo
-- Suporte a vários termos por requisição
-- Estrutura em domínio para expansão futura (TikTok, etc.)
+- Busca automática de vídeos por termos configurados 🟢	
+- Classificação de engajamento com base nas visualizações 🟢	
+- Envio de alertas formatados para canais do Discord por termo 🟢	
+- Suporte a vários termos por requisição 🟢	
+- Estrutura em domínio para expansão futura (TikTok, etc.) 🟢	
 
 ---
 
