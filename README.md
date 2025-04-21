@@ -13,6 +13,8 @@ TrendWatchYoutube é um bot inteligente de monitoramento de conteúdo em alta no
 - Envio de alertas formatados para canais do Discord por termo 🟢	
 - Suporte a vários termos por requisição 🟢	
 - Estrutura em domínio para expansão futura (TikTok, etc.) 🟢	
+- Integrado com mongodb 🟢	
+- Swagger 🟢	
 
 ---
 
@@ -20,27 +22,39 @@ TrendWatchYoutube é um bot inteligente de monitoramento de conteúdo em alta no
 
 ```
 trend-watch-youtube/
-├── bot/
-│   └── discordClient.js
-├── config/
-│   └── env.js
-├── domains/
-│   └── youtube/
-│       ├── controllers/
-│       │   └── youtubeController.js
-│       ├── dtos/
-│       │   └── video.dto.js
-│       ├── routes/
+├── src/
+│   └── bot/
+│       │   └── discordClient.js
+│   └──  config/
+│       │   └── canalMap.js
+│       │   └── db.js
+│       │   └── env.js
+│       │   └── swagger.js
+│   └──  domains/
+│       │   └── youtube/
+│       │   |   └──controllers/
+│       │   |       └── YoutubeController.js
+│       │   |   └──models/
+│       │   |       └── VideoYoutube.js
+│       │   |   └──schema/
+│       │   |       └── YoutubeVideoSchema.js
+│       │   |   └──services/
+│       │   |       └── discord.js
+│       │   |       └── youtube.js
+│   └──  insomnia/
+│   └──  routes/
 │       │   └── youtube.routes.js
-│       ├── schemas/
-│       │   └── video.schema.js
-│       ├── services/
-│       │   ├── youtubeService.js
-│       │   └── discordService.js
-│       └── utils/
-│           ├── classificarEngajamento.js
-│           └── roterizador.js
-└── channelsMap.js
+│  └── utils/
+│       ├── classificarEngajamento.js
+│       └── dates.js
+│       └── roterizador.js
+│       └── saveReportDb.js
+└── .env
+└── .gitignore
+└── app.js
+└── package.json
+└── README.MD
+└── server.js
 ```
 
 ---
@@ -112,26 +126,26 @@ npm install
 
 3. Configure o `.env`
 ```env
-YOUTUBE_API_KEY=your_youtube_key
-DISCORD_TOKEN=your_discord_token
-CHANNEL_NODEJS=1234567890
-CHANNEL_QA=...
+YOUTUBE_API_KEY=<SEU_ID_AQUI>
+DISCORD_TOKEN=<SEU_ID_AQUI>
+CANAL_DEFAULT_ID=<SEU_ID_AQUI>
+CANAL_DEV_ID=<SEU_ID_AQUI>
+CANAL_QA_ID=<SEU_ID_AQUI>
+CANAL_ENG_ID=<SEU_ID_AQUI>
+CANAL_JEST_ID=<SEU_ID_AQUI>
+CANAL_AUTOMACAO_ID=<SEU_ID_AQUI>
+MONGO_URI=<SUA_STRING_DE_CONECÇAO_AQUI>
 ```
 
-4. Inicie o bot do Discord
+4. Inicie o servidor
 ```bash
-node src/bot/discordClient.js
-```
-
-5. Inicie a API
-```bash
-npm start
+npm run dev
 ```
 
 ---
 
 ## 📌 Roadmap Futuro
-- [ ] Integração com MongoDB
+- [x] Integração com MongoDB
 - [ ] Transcrição automática dos vídeos em destaque
 - [ ] Painel web para visualização e gestão
 - [ ] Integração com TikTok e outras redes
