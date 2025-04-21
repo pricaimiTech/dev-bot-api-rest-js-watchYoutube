@@ -1,7 +1,7 @@
 // src/domains/youtube/controllers/YoutubeController.js
 import { buscarVideosPorTermo } from '../services/youtube.js';
 import { enviarAlertaDiscord } from '../services/discord.js';
-import saveReportDb from '../utils/saveReportDb.js';
+import saveReportDb from '../../../utils/saveReportDb.js';
 
 class YoutubeController {
   static async getTopVideos(req, res) {

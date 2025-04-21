@@ -1,5 +1,5 @@
 import getWeekNumber from "./dates.js";
-import reportSemanalSchema from "../schema/YoutubeVideoSchema.js";
+import reportSemanalSchema from "../domains/youtube/schema/YoutubeVideoSchema.js";
 
 export default async function saveReportDb(canal, relatorioPorTermo) {
     const date = new Date();

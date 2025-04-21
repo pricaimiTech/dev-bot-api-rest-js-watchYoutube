@@ -1,6 +1,6 @@
 // app.js
 import express from 'express';
-import youtubeRoutes from './src/domains/youtube/routes/youtube.routes.js';
+import youtubeRoutes from './src/routes/youtube.routes.js';
 import connectDB from './src/config/db.js';
 
 const app = express();

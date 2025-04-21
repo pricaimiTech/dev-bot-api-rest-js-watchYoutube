@@ -1,6 +1,6 @@
 import { client } from '../../../bot/discordClient.js';
-import { classificarEngajamento } from '../utils/classificarEngajamento.js';
-import { gerarRoteiro } from '../utils/roterizador.js';
+import { classificarEngajamento } from '../../../utils/classificarEngajamento.js';
+import { gerarRoteiro } from '../../../utils/roterizador.js';
 import { canalMap } from '../../../config/canalMap.js';
 
 function encontrarCanalPorTermo(termo) {
