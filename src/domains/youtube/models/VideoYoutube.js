@@ -1,5 +1,5 @@
 // src/domains/youtube/models/VideoYoutube.js
-import { classificarEngajamento } from '../utils/classificarEngajamento.js';
+import { classificarEngajamento } from '../../../utils/classificarEngajamento.js';
 
 export default class VideoYoutube {
   constructor({ id, titulo, canal, descricao, publicacao, visualizacoes, likes, comentarios, compartilhamento, link, destaque, nivel }) {
